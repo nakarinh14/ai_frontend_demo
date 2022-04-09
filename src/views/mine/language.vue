@@ -14,9 +14,19 @@
             clickable
             @click="changeLang('zh')"
           >
-            <van-radio 
+            <van-radio
               slot="right-icon"
               name="zh"
+            />
+          </van-cell>
+          <van-cell
+            :title="$t('setting.thai')"
+            clickable
+            @click="changeLang('th')"
+          >
+            <van-radio
+              slot="right-icon"
+              name="th"
             />
           </van-cell>
           <van-cell
@@ -27,16 +37,6 @@
             <van-radio
               slot="right-icon"
               name="en"
-            />
-          </van-cell>
-          <van-cell
-            :title="$t('setting.hk')"
-            clickable
-            @click="changeLang('hk')"
-          >
-            <van-radio
-              slot="right-icon"
-              name="hk"
             />
           </van-cell>
         </van-cell-group>
@@ -64,6 +64,11 @@ export default {
         this.$i18n.locale = "zh";
         localStorage.setItem("localLang", "zh");
         Locale.use('zh-CN', zhCN);
+      } else if (lang === 'th') {
+        this.radio = 'th';
+        this.$i18n.locale = "th";
+        localStorage.setItem("localLang", "th");
+        Locale.use('en-US', enUS);
       } else if (lang === "en") {
         this.radio = 'en';
         this.$i18n.locale = "en";

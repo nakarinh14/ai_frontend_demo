@@ -125,6 +125,7 @@ export default {
     message: 'Message',
     chinese: '简体中文',
     hk: '繁體中文',
+    thai: 'ภาษาไทย',
     english: 'English',
     logout: 'Log out',
   },
