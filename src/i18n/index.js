@@ -30,7 +30,7 @@ export function getLanguage () {
   ).toLowerCase()
   if (language === 'th') {
     localStorage.setItem('localLang', 'th')
-    return 'hk'
+    return 'th'
   } else if (language === 'zh-tw') {
     localStorage.setItem('localLang', 'hk')
     return 'hk'
