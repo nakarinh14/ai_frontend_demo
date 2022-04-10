@@ -8,26 +8,33 @@
         <img src="../../assets/icons/tabbar/mine_active.png" class="header-icon"/>
       </router-link>
     </header>
-    <van-notice-bar 
+    <van-notice-bar
       left-icon="volume-o"
       color="#1989fa" background="#faf9ff"
       v-if="language === 'zh' && remoteBanner != null"
     >
       {{ remoteBanner.title }}: {{ remoteBanner.content }}
     </van-notice-bar>
-    <van-notice-bar 
+    <van-notice-bar
       left-icon="volume-o"
       color="#1989fa" background="#faf9ff"
       v-if="language === 'en' && remoteBanner != null"
     >
       {{ remoteBanner.title_en }}: {{ remoteBanner.content_en }}
     </van-notice-bar>
-    <van-notice-bar 
+    <van-notice-bar
       left-icon="volume-o"
       color="#1989fa" background="#faf9ff"
       v-if="language === 'hk' && remoteBanner != null"
     >
       {{ remoteBanner.title_hk }}: {{ remoteBanner.content_hk }}
+    </van-notice-bar>
+    <van-notice-bar
+      left-icon="volume-o"
+      color="#1989fa" background="#faf9ff"
+      v-if="language === 'th' && remoteBanner != null"
+    >
+      {{ remoteBanner.title_th }}: {{ remoteBanner.content_th }}
     </van-notice-bar>
     <div class="home-title">
       {{$t('home.title')}}
@@ -53,12 +60,13 @@
       :showCancelButton="true"
       :cancelButtonText="$t('home.cancel')"
       :confirmButtonText="$t('home.agree')"
-      :title="language === 'zh' ? remoteAgreement.title : language === 'en' ? remoteAgreement.title_en : remoteAgreement.title_hk"
+      :title="language === 'zh' ? remoteAgreement.title : language === 'en' ? remoteAgreement.title_en : remoteAgreement.title_th"
       :beforeClose="handleClose"
     >
       <div class="agreement-content" v-html="remoteAgreement.content" v-if="language === 'zh'"></div>
       <div class="agreement-content" v-html="remoteAgreement.content_en" v-if="language === 'en'"></div>
       <div class="agreement-content" v-html="remoteAgreement.content_hk" v-if="language === 'hk'"></div>
+      <div class="agreement-content" v-html="remoteAgreement.content_th" v-if="language === 'th'"></div>
     </van-dialog>
     <van-dialog v-model="showIpDisable" :showCancelButton="false" :showConfirmButton="false">
       <div class="dialog-content">{{$t('home.check_ip_enable')}}</div>
@@ -111,11 +119,17 @@ export default {
                 if (item.title_hk === '' || item.title_hk == null) {
                   item.title_hk = item.title;
                 }
+                if (item.title_th === '' || item.title_th == null) {
+                  item.title_th = item.title;
+                }
                 if (item.content_en === '' || item.content_en == null) {
                   item.content_en = item.content;
                 }
                 if (item.content_hk === '' || item.content_hk == null) {
                   item.content_hk = item.content;
+                }
+                if (item.content_th === '' || item.content_th == null) {
+                  item.content_th = item.content;
                 }
                 this.remoteBanner = item;
               }  else if (item.property === 'AGREEMENT') {
@@ -125,11 +139,17 @@ export default {
                 if (item.title_hk === '' || item.title_hk == null) {
                   item.title_hk = item.title;
                 }
+                if (item.title_th === '' || item.title_th == null) {
+                  item.title_th = item.title;
+                }
                 if (item.content_en === '' || item.content_en == null) {
                   item.content_en = item.content;
                 }
                 if (item.content_hk === '' || item.content_hk == null) {
                   item.content_hk = item.content;
+                }
+                if (item.content_th === '' || item.content_th == null) {
+                  item.content_th = item.content;
                 }
                 this.remoteAgreement = item;
               }

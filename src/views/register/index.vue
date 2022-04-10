@@ -68,12 +68,13 @@
       <div class="agreement-content" v-html="AGREEMENT_zh" v-if="language === 'zh'"></div>
       <div class="agreement-content" v-html="AGREEMENT_hk" v-if="language === 'hk'"></div>
       <div class="agreement-content" v-html="AGREEMENT_en" v-if="language === 'en'"></div>
+      <div class="agreement-content" v-html="AGREEMENT_th" v-if="language === 'th'"></div>
     </van-dialog>
   </div>
 </template>
 
 <script>
-import { AGREEMENT_zh, AGREEMENT_en, AGREEMENT_hk } from "../../utils/agreement";
+import { AGREEMENT_zh, AGREEMENT_en, AGREEMENT_hk, AGREEMENT_th } from "../../utils/agreement";
 import { getLanguage } from "../../i18n/index";
 export default {
   name: "register",
@@ -94,6 +95,7 @@ export default {
       AGREEMENT_zh,
       AGREEMENT_en,
       AGREEMENT_hk,
+      AGREEMENT_th,
       language: getLanguage(),
     };
   },
