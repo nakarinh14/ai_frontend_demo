@@ -61,7 +61,7 @@ The environment with adequate lighting conditions. Be aware to avoid a large bri
 <br/><br/>
 3. Preparation before taking photos.
 <br/>
-Please take off your glasses (including contact lenses) when taking photos, wipe off eye makeup, remove false eyelashes, and make sure your hair does not cover the eye area. 
+Please take off your glasses (including contact lenses) when taking photos, wipe off eye makeup, remove false eyelashes, and make sure your hair does not cover the eye area.
 <br/><br/>
 4. Adjust the camera mode.
 <br/>
@@ -74,5 +74,29 @@ Please align and crop the eye photo according to the guide of the demo by moving
 6. About the test results.
 <br/>
 There are two test results in the demo: high-risk and low-risk. If your test result is high-risk, it is recommended to take more tests, choose the advanced test, and change different lighting environments and backgrounds to take eye photos. If there are still many high-risk results. It is recommended to consult a professional medical institution based on your physical condition. You can also send an email to service@aimomics.org to contact us for further testing.
+<br/>
+`
+
+export const FAQ_th = `
+1. เครื่องที่รองรับ
+<br/>
+ขณะนี้การทดสอบเรารองรับมือถือที่มีกล้องขนาด 500 ล้านพิกเซลขึ้นไป ทั้งระบบ Android, iOS และ PDA
+<br/><br/>
+2. สภาพแวดล้อมถ่ายรูป
+<br/>
+กรุณาเลือกถ่ายรูปที่บริเวณที่มีแสงพอดี เลี่ยงการย้อนแสง, เลี่ยงสภาพแวดล้อมมืดที่มองไม่ชัด หลีกเลี่ยงพื้นหลังสีแดง
+<br/><br/>
+3. การเตรียมตัวก่อนถ่าย<br/>
+กรุณานำแว่นออก (รวมทั้งเลนส์สัมผัส) เช็คเครื่องสำอางบนหน้า นำขนตาปลอมออก ผมห้ามบังสายตา
+<br/><br/>
+4. ปรับโหมดกล้องให้เรียบร้อย<br/>
+กรุณาใช้โหมดกล้องปกติ เลี่ยงการใช้ฟิลเตอร์กล้อง พร้อมย้อนแสง ปิดแฟลช
+<br/><br/>
+5. การจัดตำแหน่งและการครอบตัดรูปภาพ
+<br/>กรุณาทำตามรูปภาพและข้อความที่แนะนำไว้ ให้มั่นใจว่าสายตาอยู่บริเวณตามรูปภาพที่แนะนำไว้ ตรวจสอบว่าตาทั้งสองข้างได้ถูกครอบไว้แล้วก็ไม่รวมพื้นหลัง
+<br/><br/>
+6. เกี่ยวกับผลลัพธ์ทดสอบ
+<br/>
+การทดสอบมีแบ่งเป็น 2 ชนิด ความเสี่ยงสูงและความเสี่ยงต่ำ ถ้าคุณอยู่ในกลุ่มความเสี่ยงสูง กรุณาทดสอบบ่อยครั้ง เลือกการทดสอบขั้นสูง แล้วเปลี่ยนสถานที่แสดงและฉากตอนถ้ายรูปตา ถ้ามีการทดสอบความเสี่ยงสูงบ่อยครั้ง ทางเราให้แนะนำไปตรวจสอบที่สถาบันการแพทย์ตามสภาวะร่างกาย
 <br/>
 `

@@ -9,12 +9,13 @@
     <div class="faq-content" v-html="FAQ_zh" v-if="language === 'zh'"></div>
     <div class="faq-content" v-html="FAQ_hk" v-if="language === 'hk'"></div>
     <div class="faq-content" v-html="FAQ_en" v-if="language === 'en'"></div>
+    <div class="faq-content" v-html="FAQ_th" v-if="language === 'th'"></div>
   </div>
 </template>
 
 <script>
 import { getLanguage } from "../../i18n/index";
-import { FAQ_zh, FAQ_en, FAQ_hk } from "../../utils/faq";
+import { FAQ_zh, FAQ_en, FAQ_hk, FAQ_th } from "../../utils/faq";
 export default {
   name: "faq",
   data() {
@@ -22,6 +23,7 @@ export default {
       FAQ_zh,
       FAQ_en,
       FAQ_hk,
+      FAQ_th,
       language: getLanguage(),
     };
   },
