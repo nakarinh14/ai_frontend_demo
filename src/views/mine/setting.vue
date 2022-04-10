@@ -52,6 +52,7 @@
     >
       <div class="agreement-content" v-html="remoteAgreement.content" v-if="language === 'zh'"></div>
       <div class="agreement-content" v-html="remoteAgreement.content_en" v-if="language === 'en'"></div>
+      <div class="agreement-content" v-html="remoteAgreement.content_en" v-if="language === 'th'"></div>
       <div class="agreement-content" v-html="remoteAgreement.content_hk" v-if="language === 'hk'"></div>
     </van-dialog>
   </div>

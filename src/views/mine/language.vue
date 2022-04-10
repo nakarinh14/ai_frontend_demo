@@ -10,16 +10,6 @@
       <van-radio-group v-model="radio">
         <van-cell-group>
           <van-cell
-            :title="$t('setting.chinese')"
-            clickable
-            @click="changeLang('zh')"
-          >
-            <van-radio
-              slot="right-icon"
-              name="zh"
-            />
-          </van-cell>
-          <van-cell
             :title="$t('setting.thai')"
             clickable
             @click="changeLang('th')"
