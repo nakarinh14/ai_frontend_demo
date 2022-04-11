@@ -162,6 +162,10 @@
           <span class="result-label" v-if="cv19_low_risk">{{$t('order.step_5_low')}}</span>
           <span class="result-label result-label-high" v-if="!cv19_low_risk">{{$t('order.step_5_high')}}</span>
           <van-circle v-model="result_cv19.prob" :rate="result_cv19.prob" :text="result_cv19.prob + '%'" :speed="40" stroke-linecap="square" :stroke-width="100" layer-color="#eeeeee" :color="gradientColorCV19" size="150"/>
+          <div class="dialog-content" v-if="!cv19_low_risk">
+            <span style="color: red; font-weight: bold;">{{$t('order.high_risk_tip_0')}}</span>
+            <span style="color: red;">{{$t('order.high_risk_tip_1')}}</span>
+          </div>
         </div>
         <div class="result-item" v-if="!isNormalUser">
           <span class="result-label">{{result_pulmonary.label}}</span>
