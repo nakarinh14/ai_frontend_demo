@@ -1,9 +1,24 @@
 <template>
   <div class="covid-page home-layout">
     <header class="page-header">
+<!--      <div style="align-items: center; display: flex">-->
+<!--        <router-link class="header-link" to="/index" tag="span">-->
+<!--          <img src="../../assets/icons/tabbar/home_active.png" class="header-icon"/>-->
+<!--        </router-link>-->
+<!--        <a class="header-link" style="margin-left: 10px" href="http://aimomics.org/">-->
+<!--          <img src="../../assets/image/logo.png" class="header-logo"/>-->
+<!--        </a>-->
+<!--        <img style="margin-left: -13px" src="../../assets/image/demo_aietech_logo.png" class="header-logo1"/>-->
+<!--      </div>-->
       <router-link class="header-link" to="/index" tag="span">
         <img src="../../assets/icons/tabbar/home_active.png" class="header-icon"/>
       </router-link>
+      <div style="display: flex; align-items: center">
+        <a class="header-link" style="margin-left: 10px" href="http://aimomics.org/">
+          <img src="../../assets/image/logo.png" class="header-logo"/>
+        </a>
+        <img src="../../assets/image/demo_aietech_logo.png" class="header-logo1"/>
+      </div>
       <router-link class="header-link" to="/mine" tag="span">
         <img src="../../assets/icons/tabbar/mine_active.png" class="header-icon"/>
       </router-link>
@@ -39,8 +54,8 @@
     <div class="home-title">
       {{$t('home.title')}}
     </div>
-    <div class="home-tip" v-if="language != 'en'">
-      COVID-19 EYE TEST FREE DEMO CHINA USE ONLY (BETA 5.1)
+    <div class="home-tip">
+      THAILAND USE ONLY
     </div>
     <div class="home-content">
       <van-button size="normal" class="home-button home-button-white" v-show="agreementChecked" v-if="!uploadNeedLogin || isLogin" @click="handleSingle">{{$t('home.single')}}</van-button>
@@ -53,7 +68,7 @@
         {{$t('home.alert_3')}}
       </div>
     </div>
-    <a href="http://www.aimomics.org" class="home-link">WWW.AIMOMICS.ORG</a>
+    <a href="http://www.aimomics.org" class="home-link">{{$t('home.cooperate')}} WWW.AIMOMICS.ORG</a>
     <van-dialog
       v-if="remoteAgreement != null && remoteAgreement.is_active"
       v-model="showAgreement"
@@ -286,7 +301,7 @@ body{
 }
 .home-link {
   color: #ffffff;
-  font-size: 16px;
+  font-size: 10px;
   font-family: PingFang SC, microsoft yahei;
   width: 180px;
   height: 20px;

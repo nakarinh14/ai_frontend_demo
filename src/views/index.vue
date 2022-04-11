@@ -83,6 +83,13 @@ export default {
           width:20px;
           height:20px;
         }
+        .header-logo{
+          height: 10px;
+        }
+        .header-logo1{
+          height: 14px;
+          padding-bottom: 1px;
+        }
       }
       .covid-btns {
         text-align: center;

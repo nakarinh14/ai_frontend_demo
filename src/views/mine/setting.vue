@@ -48,7 +48,7 @@
       v-if="remoteAgreement != null && remoteAgreement.is_active"
       v-model="showAgreement"
       :showCancelButton="false"
-      :title="language === 'zh' ? remoteAgreement.title : language === 'en' ? remoteAgreement.title_en : remoteAgreement.title_hk"
+      :title="language === 'th' ? remoteAgreement.title_th : remoteAgreement.title_en"
     >
       <div class="agreement-content" v-html="remoteAgreement.content" v-if="language === 'zh'"></div>
       <div class="agreement-content" v-html="remoteAgreement.content_en" v-if="language === 'en'"></div>
@@ -90,11 +90,17 @@ export default {
                 if (item.title_hk === '' || item.title_hk == null) {
                   item.title_hk = item.title;
                 }
+                if (item.title_th === '' || item.title_th == null) {
+                  item.title_th = item.title;
+                }
                 if (item.content_en === '' || item.content_en == null) {
                   item.content_en = item.content;
                 }
                 if (item.content_hk === '' || item.content_hk == null) {
                   item.content_hk = item.content;
+                }
+                if (item.content_th === '' || item.content_th == null) {
+                  item.content_th = item.content;
                 }
                 this.remoteAgreement = item;
               }

@@ -8,13 +8,14 @@
     </header>
     <div class="logo-version">
       <img src="../../assets/image/logo.png" />
+      <img style="margin-top: 20px" src="../../assets/image/demo_aietech_logo.png" />
       <span class="version">{{$t('about.version')}} BETA 5.1</span>
     </div>
     <div class="about-us-disc">
       {{$t('about.tip')}}
     </div>
     <div class="about-us-email">
-      {{$t('about.email')}} service@aimomics.org
+      {{$t('about.email')}} service@b-project.com
     </div>
   </div>
 </template>

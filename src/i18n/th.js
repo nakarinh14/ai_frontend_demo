@@ -1,7 +1,7 @@
 export default {
   common: { login: 'ล็อกอิน', register: 'สมัครบัญชี' },
   home: {
-    title: 'AIETECH EYE TEST',
+    title: 'COVID-19 AIETECH EYE TEST',
     single: 'ทดสอบรวดเร็ว',
     multi: 'ทดสอบขั้นสูง',
     login: 'ล็อกอินแล้วเทส',
@@ -13,7 +13,8 @@ export default {
     agree: 'ยืนยัน',
     cancel: 'ยกเลิก',
     check_ip_enable: 'ขออภัย，การตรวจ COVID EYE TEST DEMO ของไทยต้องใช้ผ่าน VPN จีนชั่วคราว',
-    check_max_test: 'ขออภัย，การทดลอง COVID ฟรีหมดจำนวนการใช้งานแล้ววันนี้ กรุณาลองวันอื่น'
+    check_max_test: 'ขออภัย，การทดลอง COVID ฟรีหมดจำนวนการใช้งานแล้ววันนี้ กรุณาลองวันอื่น',
+    cooperate: 'ร่วมมือกับ'
   },
   login: {
     input_phone: 'กรุณาใส่เบอร์มือถือ',
@@ -58,13 +59,13 @@ export default {
     step_3_title: 'กำลังตรวจสอบข้อมูลตา',
     step_4_title: 'การทดสอบไม่สำเร็จ！กรุณาลองใหม่',
     step_5_title: 'ผลทดสอบ',
-    step_5_low: 'CV19 ความเสี่ยงต่ำ',
-    step_5_high: 'CV19 ความเสี่ยงสูง',
+    step_5_low: 'ความเสี่ยงต่ำ',
+    step_5_high: 'ความเสี่ยงสูง',
     step_5_rePredict: 'ทดลองใหม่',
     tip_0: '1. กรุณาถ่ายภาพดวงตาของคุณหรือเลือกภาพถ่ายตาสี่ภาพจากโทรศัพท์ และปรับภาพให้เหมือนกับภาพตัวอย่าง หลังจากนั้นอัปโหลดเพื่อให้ได้ผลการทดสอบ',
     step_6_tip: 'Contact us for free double check',
     high_risk_tip_0: 'คำเตือน：',
-    high_risk_tip_1: 'ผลตรวจสอบอยู่ในกลุ่มเสี่ยงสูง, กรุณาทดสอบด้วย ATK หรือ PCR. ถ้าต้องการติดต่อสอบถามกรุณาส่ง ',
+    high_risk_tip_1: 'ผลตรวจสอบอยู่ในกลุ่มเสี่ยงสูง, กรุณาทดสอบด้วย ATK หรือ PCR ทันที',
     high_risk_tip_2: 'อีเมล',
     high_risk_tip_3: 'หรือว่า',
     high_risk_tip_4: 'กดตรงนี้',

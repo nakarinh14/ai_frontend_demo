@@ -4,6 +4,12 @@
       <router-link class="header-link" to="/index" tag="span">
         <img src="../../assets/icons/tabbar/home_active.png" class="header-icon"/>
       </router-link>
+      <div style="display: flex; align-items: center">
+        <a class="header-link" style="margin-left: 10px" href="http://aimomics.org/">
+          <img src="../../assets/image/logo.png" class="header-logo"/>
+        </a>
+        <img src="../../assets/image/demo_aietech_logo.png" class="header-logo1"/>
+      </div>
       <router-link class="header-link" to="/mine" tag="span">
         <img src="../../assets/icons/tabbar/mine_active.png" class="header-icon"/>
       </router-link>
@@ -12,7 +18,7 @@
       {{$t('home.title')}}
     </div>
     <div class="order-tip" v-show="language != 'en'">
-      COVID-19 EYE TEST FREE DEMO CHINA USE ONLY (BETA 5.1)
+      THAILAND USE ONLY
     </div>
     <div class="order-content" v-if="uploadNeedLogin && !isLogin">
       <van-button size="normal" style="margin-top:30px;" class="order-button" @click="handleLogin">{{$t('order.step_0_login')}}</van-button>
@@ -72,10 +78,14 @@
         {{$t('order.step_2_title')}}
       </div>
       <div class="order-preview-image" v-for="(item, index) in uploadImage" :key="item" >
-        <img src="../../assets/image/eye.jpg" class="order-exam" v-if="index == 0"/>
-        <img src="../../assets/image/eye_left.jpg" class="order-exam" v-if="index == 1"/>
-        <img src="../../assets/image/eye_right.jpg" class="order-exam" v-if="index == 2"/>
-        <img src="../../assets/image/eye_up.jpg" class="order-exam" v-if="index == 3"/>
+        <span class="image-title" v-if="index === 0">{{ $t('multi.img0') }}:</span>
+        <span class="image-title" v-if="index === 1">{{ $t('multi.img1') }}:</span>
+        <span class="image-title" v-if="index === 2">{{ $t('multi.img2') }}:</span>
+        <span class="image-title" v-if="index === 3">{{ $t('multi.img3') }}:</span>
+<!--        <img src="../../assets/image/eye.jpg" class="order-exam" v-if="index == 0"/>-->
+<!--        <img src="../../assets/image/eye_left.jpg" class="order-exam" v-if="index == 1"/>-->
+<!--        <img src="../../assets/image/eye_right.jpg" class="order-exam" v-if="index == 2"/>-->
+<!--        <img src="../../assets/image/eye_up.jpg" class="order-exam" v-if="index == 3"/>-->
         <img :src="item" class="order-submit"/>
       </div>
       <div class="order-prview-text">
@@ -139,7 +149,7 @@
             {{$t('password.save')}}
           </van-button>
         </div>
-      </van-form>    
+      </van-form>
     </div>
     <div class="order-content" v-if="step == 5">
       <div class="order-result">
@@ -148,9 +158,10 @@
           <van-circle v-model="result_healthy.prob" :rate="result_healthy.prob" :text="result_healthy.prob + '%'" :speed="40" stroke-linecap="square" :stroke-width="100" layer-color="#eeeeee" :color="gradientColorHealthy" size="100"/>
         </div>
         <div class="result-item">
+          <span class="result-title">COVID-19</span>
           <span class="result-label" v-if="cv19_low_risk">{{$t('order.step_5_low')}}</span>
           <span class="result-label result-label-high" v-if="!cv19_low_risk">{{$t('order.step_5_high')}}</span>
-          <van-circle v-model="result_cv19.prob" :rate="result_cv19.prob" :text="result_cv19.prob + '%'" :speed="40" stroke-linecap="square" :stroke-width="100" layer-color="#eeeeee" :color="gradientColorCV19" size="100"/>
+          <van-circle v-model="result_cv19.prob" :rate="result_cv19.prob" :text="result_cv19.prob + '%'" :speed="40" stroke-linecap="square" :stroke-width="100" layer-color="#eeeeee" :color="gradientColorCV19" size="150"/>
         </div>
         <div class="result-item" v-if="!isNormalUser">
           <span class="result-label">{{result_pulmonary.label}}</span>
@@ -175,10 +186,10 @@
       <div class="dialog-content">
         <span style="color: red; font-weight: bold;">{{$t('order.high_risk_tip_0')}}</span>
         {{$t('order.high_risk_tip_1')}}
-        <a class="order-result-tip-a" href="mailto: service@aimomics.org">{{$t('order.high_risk_tip_2')}}</a>
-        {{$t('order.high_risk_tip_3')}}
-        <a class="order-result-tip-a" href="/index.html#mobile_6">{{$t('order.high_risk_tip_4')}}</a>
-        {{$t('order.high_risk_tip_5')}}
+<!--        <a class="order-result-tip-a" href="mailto: service@aimomics.org">{{$t('order.high_risk_tip_2')}}</a>-->
+<!--        {{$t('order.high_risk_tip_3')}}-->
+<!--        <a class="order-result-tip-a" href="/index.html#mobile_6">{{$t('order.high_risk_tip_4')}}</a>-->
+<!--        {{$t('order.high_risk_tip_5')}}-->
       </div>
     </van-dialog>
   </div>
@@ -665,9 +676,15 @@ body{
         align-items: center;
         flex-direction: column;
         padding:10px 0;
+        .result-title{
+          color:#ffffff;
+          font-size: 22px;
+          font-weight: bold;
+          margin-bottom:15px;
+        }
         .result-label{
           color:#ffffff;
-          font-size: 18px;
+          font-size: 35px;
           font-weight: bold;
           margin-bottom:20px;
           &.result-label-high{
@@ -705,6 +722,10 @@ body{
       justify-content: space-between;
       align-items: center;
       margin-top: 15px;
+      .image-title{
+        font-size: 20px;
+        color: #ffffff;
+      }
       .order-exam{
         width: 152.5px;
         height: 50px;

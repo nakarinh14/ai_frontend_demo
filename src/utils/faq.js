@@ -73,7 +73,7 @@ Please align and crop the eye photo according to the guide of the demo by moving
 <br/><br/>
 6. About the test results.
 <br/>
-There are two test results in the demo: high-risk and low-risk. If your test result is high-risk, it is recommended to take more tests, choose the advanced test, and change different lighting environments and backgrounds to take eye photos. If there are still many high-risk results. It is recommended to consult a professional medical institution based on your physical condition. You can also send an email to service@aimomics.org to contact us for further testing.
+There are two test results in the demo: high-risk and low-risk. If your test result is high-risk, it is recommended to take more tests, choose the advanced test, and change different lighting environments and backgrounds to take eye photos. If there are still many high-risk results. It is recommended to consult a professional medical institution based on your physical condition. You can also send an email to service@b-project.com to contact us for further testing.
 <br/>
 `
 

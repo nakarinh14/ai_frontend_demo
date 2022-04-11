@@ -6,6 +6,9 @@
     <div v-if="language === 'en'" class="close-tip-title">
       {{ closeTip.title_en }}
     </div>
+    <div v-if="language === 'th'" class="close-tip-title">
+      {{ closeTip.title_th }}
+    </div>
     <div v-if="language === 'hk'" class="close-tip-title">
       {{ closeTip.title_hk }}
     </div>
@@ -14,6 +17,9 @@
     </div>
     <div v-if="language === 'en'" class="close-tip-content">
       {{ closeTip.content_en }}
+    </div>
+    <div v-if="language === 'th'" class="close-tip-content">
+      {{ closeTip.content_th }}
     </div>
     <div v-if="language === 'hk'" class="close-tip-content">
       {{ closeTip.content_hk }}

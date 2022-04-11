@@ -14,7 +14,7 @@
       <ul class="user-info" v-if="isLogin">
         <li class="user-name">{{username}}</li>
       </ul>
-    </section> 
+    </section>
     <section class="mine-content">
       <ul class="options-list">
         <router-link to="/mine/history" class="option-item" tag="li">
@@ -60,7 +60,7 @@ export default {
     this.$eventBus.$emit("changeTag", 3);
   },
   methods: {
-    
+
   }
 };
 </script>
