@@ -49,6 +49,7 @@
       v-model="showAgreement"
       :showCancelButton="false"
       :title="language === 'th' ? remoteAgreement.title_th : remoteAgreement.title_en"
+      :confirmButtonText="$t('order.high_risk_tip_confirm')"
     >
       <div class="agreement-content" v-html="remoteAgreement.content" v-if="language === 'zh'"></div>
       <div class="agreement-content" v-html="remoteAgreement.content_en" v-if="language === 'en'"></div>

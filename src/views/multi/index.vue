@@ -182,16 +182,16 @@
     <van-dialog v-model="showMaxTestDisable" :showCancelButton="false" :showConfirmButton="false">
       <div class="dialog-content">{{$t('home.check_max_test')}}</div>
     </van-dialog>
-    <van-dialog v-model="showHighRisk" className="high-risk-dialog" :showCancelButton="false" :showConfirmButton="true" :confirmButtonText="$t('order.high_risk_tip_confirm')">
-      <div class="dialog-content">
-        <span style="color: red; font-weight: bold;">{{$t('order.high_risk_tip_0')}}</span>
-        {{$t('order.high_risk_tip_1')}}
+<!--    <van-dialog v-model="showHighRisk" className="high-risk-dialog" :showCancelButton="false" :showConfirmButton="true" :confirmButtonText="$t('order.high_risk_tip_confirm')">-->
+<!--      <div class="dialog-content">-->
+<!--        <span style="color: red; font-weight: bold;">{{$t('order.high_risk_tip_0')}}</span>-->
+<!--        {{$t('order.high_risk_tip_1')}}-->
 <!--        <a class="order-result-tip-a" href="mailto: service@aimomics.org">{{$t('order.high_risk_tip_2')}}</a>-->
 <!--        {{$t('order.high_risk_tip_3')}}-->
 <!--        <a class="order-result-tip-a" href="/index.html#mobile_6">{{$t('order.high_risk_tip_4')}}</a>-->
 <!--        {{$t('order.high_risk_tip_5')}}-->
-      </div>
-    </van-dialog>
+<!--      </div>-->
+<!--    </van-dialog>-->
   </div>
 </template>
 

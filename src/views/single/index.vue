@@ -136,9 +136,13 @@
         </div>
         <div class="result-item">
           <span class="result-title">COVID-19</span>
-          <span class="result-label" v-if="cv19_low_risk">{{$t('order.step_5_low')}}</span>
-          <span class="result-label result-label-high" v-if="!cv19_low_risk">{{$t('order.step_5_high')}}</span>
+<!--          <span class="result-label" v-if="cv19_low_risk">{{$t('order.step_5_low')}}</span>-->
+          <span class="result-label result-label-high">{{$t('order.step_5_high')}}</span>
           <van-circle v-model="result_cv19.prob" :rate="result_cv19.prob" :text="result_cv19.prob + '%'" :speed="40" stroke-linecap="square" :stroke-width="100" layer-color="#eeeeee" :color="gradientColorCV19" size="150"/>
+          <div class="dialog-content">
+            <span style="color: red; font-weight: bold;">{{$t('order.high_risk_tip_0')}}</span>
+            <span style="color: red;">{{$t('order.high_risk_tip_1')}}</span>
+          </div>
         </div>
         <div class="result-item" v-if="!isNormalUser">
           <span class="result-label">{{result_pulmonary.label}}</span>
@@ -160,16 +164,12 @@
     <van-dialog v-model="showMaxTestDisable" :showCancelButton="false" :showConfirmButton="false">
       <div class="dialog-content">{{$t('home.check_max_test')}}</div>
     </van-dialog>
-    <van-dialog v-model="showHighRisk" className="high-risk-dialog" :showCancelButton="false" :showConfirmButton="true" :confirmButtonText="$t('order.high_risk_tip_confirm')">
-      <div class="dialog-content">
-        <span style="color: red; font-weight: bold;">{{$t('order.high_risk_tip_0')}}</span>
-        {{$t('order.high_risk_tip_1')}}
-<!--        <a class="order-result-tip-a" href="mailto: service@aimomics.org">{{$t('order.high_risk_tip_2')}}</a>-->
-<!--        {{$t('order.high_risk_tip_3')}}-->
-<!--        <a class="order-result-tip-a" href="/index.html#mobile_6">{{$t('order.high_risk_tip_4')}}</a>-->
-<!--        {{$t('order.high_risk_tip_5')}}-->
-      </div>
-    </van-dialog>
+<!--    <van-dialog v-model="showHighRisk" className="high-risk-dialog" :showCancelButton="false" :showConfirmButton="true" :confirmButtonText="$t('order.high_risk_tip_confirm')">-->
+<!--      <div class="dialog-content">-->
+<!--        <span style="color: red; font-weight: bold;">{{$t('order.high_risk_tip_0')}}</span>-->
+<!--        {{$t('order.high_risk_tip_1')}}-->
+<!--      </div>-->
+<!--    </van-dialog>-->
   </div>
 </template>
 
