@@ -18,7 +18,7 @@
       {{$t('home.title')}}
     </div>
     <div class="order-tip" v-show="language != 'en'">
-      COVID-19 AIETECH EYE TEST
+      THAILAND USE ONLY
     </div>
     <div class="order-content" v-if="step == 0">
       <div class="order-help">
