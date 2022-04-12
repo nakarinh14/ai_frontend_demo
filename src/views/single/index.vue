@@ -87,48 +87,48 @@
       </div>
       <van-button size="normal" class="order-button" style="margin-top:20px;" @click="handleBack">{{$t('order.step_5_rePredict')}}</van-button>
     </div>
-    <div class="order-content" v-if="step == 5 && extra_order_tip != null">
-      <van-form @submit="handleSubmitExtra">
-        <van-cell-group v-for="(item, index) in extra_order_tip" :key="item.title" >
-          <van-field
-            v-if="item.type === 0"
-            v-model="extra_order_tip_form[index]"
-            :label="language === 'zh' ? item.title : language === 'hk' ? item.title_hk : item.title_en"
-            type="text"
-            clearable
-            :rules="[{ required: true, message: $t('order.not_empty')}]"
-          />
-          <van-field
-            readonly
-            clickable
-            v-if="item.type === 1"
-            v-model="extra_order_tip_form[index]"
-            :label="language === 'zh' ? item.title : language === 'hk' ? item.title_hk : item.title_en"
-            :rules="[{ required: true, message: $t('order.not_empty')}]"
-            @click="orderTipOnOpen($event, index)"
-          />
-        </van-cell-group>
-        <van-popup v-model="extra_order_tip_show" round position="bottom">
-            <van-picker
-              show-toolbar
-              :columns="extra_order_tip_columns"
-              @confirm="orderTipOnConfirm($event)"
-              @cancel="extra_order_tip_show = false"
-            />
-          </van-popup>
-        <div class="covid-btns">
-          <van-button
-            type="info"
-            class="covid-btn"
-            :loading="handleSubmitExtraLoading"
-            :loading-text="$t('password.saving')"
-          >
-            {{$t('password.save')}}
-          </van-button>
-        </div>
-      </van-form>
-    </div>
-    <div class="order-content" v-if="step == 6">
+<!--    <div class="order-content" v-if="step == 5 && extra_order_tip != null">-->
+<!--      <van-form @submit="handleSubmitExtra">-->
+<!--        <van-cell-group v-for="(item, index) in extra_order_tip" :key="item.title" >-->
+<!--          <van-field-->
+<!--            v-if="item.type === 0"-->
+<!--            v-model="extra_order_tip_form[index]"-->
+<!--            :label="language === 'zh' ? item.title : language === 'hk' ? item.title_hk : item.title_en"-->
+<!--            type="text"-->
+<!--            clearable-->
+<!--            :rules="[{ required: true, message: $t('order.not_empty')}]"-->
+<!--          />-->
+<!--          <van-field-->
+<!--            readonly-->
+<!--            clickable-->
+<!--            v-if="item.type === 1"-->
+<!--            v-model="extra_order_tip_form[index]"-->
+<!--            :label="language === 'zh' ? item.title : language === 'hk' ? item.title_hk : item.title_en"-->
+<!--            :rules="[{ required: true, message: $t('order.not_empty')}]"-->
+<!--            @click="orderTipOnOpen($event, index)"-->
+<!--          />-->
+<!--        </van-cell-group>-->
+<!--        <van-popup v-model="extra_order_tip_show" round position="bottom">-->
+<!--            <van-picker-->
+<!--              show-toolbar-->
+<!--              :columns="extra_order_tip_columns"-->
+<!--              @confirm="orderTipOnConfirm($event)"-->
+<!--              @cancel="extra_order_tip_show = false"-->
+<!--            />-->
+<!--          </van-popup>-->
+<!--        <div class="covid-btns">-->
+<!--          <van-button-->
+<!--            type="info"-->
+<!--            class="covid-btn"-->
+<!--            :loading="handleSubmitExtraLoading"-->
+<!--            :loading-text="$t('password.saving')"-->
+<!--          >-->
+<!--            {{$t('password.save')}}-->
+<!--          </van-button>-->
+<!--        </div>-->
+<!--      </van-form>-->
+<!--    </div>-->
+    <div class="order-content" v-if="step == 5">
       <div class="order-result">
         <div class="result-item" v-if="!isNormalUser">
           <span class="result-label">{{result_healthy.label}}</span>
@@ -154,8 +154,8 @@
         </div>
       </div>
       <van-button size="normal" class="order-button" @click="handleBack">{{$t('order.step_5_rePredict')}}</van-button>
-      <div class="order-result-tip" v-if="!cv19_low_risk">{{$t('order.step_6_tip')}}</div>
-      <a class="order-result-tip-a" v-if="!cv19_low_risk" href="mailto: service@aimomics.org">service@aimomics.org</a>
+<!--      <div class="order-result-tip" v-if="!cv19_low_risk">{{$t('order.step_6_tip')}}</div>-->
+<!--      <a class="order-result-tip-a" v-if="!cv19_low_risk" href="mailto: service@aimomics.org">service@aimomics.org</a>-->
 
     </div>
     <van-dialog v-model="showIpDisable" :showCancelButton="false" :showConfirmButton="false">
