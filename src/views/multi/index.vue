@@ -49,7 +49,7 @@
   　　　　<van-button size="normal" class="order-button">{{$t('order.step_1_choose')}}</van-button>
     　　</van-uploader>
       </div>
-      <div style="margin-top: 40px; margin-bottom: 10px">
+      <div style="margin-top: 40px; margin-bottom: 10px" v-if="noImage">
         <div class="order-preview-image" >
           <span class="image-title">{{ $t('multi.img0') }}:</span>
           <img src="../../assets/image/real_eye_sample/forward-eye.jpg" class="real-sample-preview"/>

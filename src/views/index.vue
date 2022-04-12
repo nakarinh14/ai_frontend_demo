@@ -43,7 +43,7 @@ export default {
     &.covid-page {
       padding: 0 16px;
       height: 100vh ;
-      background: linear-gradient(#fdfdfd, #ecf0ff);
+      background: linear-gradient(#fdfdfd, #a4c7ea);
       .page-header {
         display: flex;
         justify-content: space-between;
