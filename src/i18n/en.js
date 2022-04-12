@@ -17,7 +17,8 @@ export default {
     cancel: 'Disagree',
     check_ip_enable: 'Sorry, the CV19 EYE TEST DEMO is only for Chinese users located in China. (The VPN users outside China are forbidden!)',
     check_max_test: 'Sorry, the free tests have run out today，please try again tomorrow.',
-    cooperate: 'Cooperate with'
+    cooperate: 'Cooperate with',
+    caution_intro: 'To protect personal privacy, wear a mask before testing'
   },
   login: {
     input_phone: 'Please enter mobile',

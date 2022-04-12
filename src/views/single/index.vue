@@ -1,14 +1,14 @@
 <template>
   <div class="covid-page order-layout">
     <header class="page-header">
-      <router-link class="header-link" to="/index" tag="span">
-        <img src="../../assets/icons/tabbar/home_active.png" class="header-icon"/>
-      </router-link>
       <div style="display: flex; align-items: center">
-        <a class="header-link" style="margin-left: 10px" href="http://aimomics.org/">
+        <router-link class="header-link" to="/index" tag="span">
+          <img src="../../assets/icons/tabbar/home_active.png" class="header-icon"/>
+        </router-link>
+        <a class="header-link" style="margin-left: 0.6rem" href="http://aimomics.org/">
           <img src="../../assets/image/logo.png" class="header-logo"/>
         </a>
-        <img src="../../assets/image/demo_aietech_logo.png" class="header-logo1"/>
+        <img style="margin-left: 0.25rem" src="../../assets/image/demo_aietech_logo.png" class="header-logo1"/>
       </div>
       <router-link class="header-link" to="/mine" tag="span">
         <img src="../../assets/icons/tabbar/mine_active.png" class="header-icon"/>

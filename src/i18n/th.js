@@ -14,7 +14,8 @@ export default {
     cancel: 'ยกเลิก',
     check_ip_enable: 'ขออภัย，การตรวจ COVID EYE TEST DEMO ของไทยต้องใช้ผ่าน VPN จีนชั่วคราว',
     check_max_test: 'ขออภัย，การทดลอง COVID ฟรีหมดจำนวนการใช้งานแล้ววันนี้ กรุณาลองวันอื่น',
-    cooperate: 'ร่วมมือกับ'
+    cooperate: 'ร่วมมือกับ',
+    caution_intro: 'เพื่อปกป้องความเป็นส่วนบุคคลของท่าน กรุณาใส่หน้ากากก่อนใช้งาน'
   },
   login: {
     input_phone: 'กรุณาใส่เบอร์มือถือ',
