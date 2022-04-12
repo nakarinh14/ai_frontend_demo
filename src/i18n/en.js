@@ -12,13 +12,13 @@ export default {
     alert: 'Attention!',
     alert_1: "1. The evaluated result cannot replace the results of doctors' face-to-face consultation and any medical tools. AIETECH EYE TEST is limited to users registered and used only in Thailand. Users who are not in Thailand are strictly prohibited and shall bear all legal responsibilities and corresponding consequences.",
     alert_2: '2. AIETECH EYE TEST will not collect any of your private information, including personal medical records and personal information without your consent. At the same time, in order to protect your personal privacy, you only provide eye photos when taking and uploading photos. If you have any questions about personal privacy, please do not perform any operations on the software.',
-    alert_3: '3. If you test result shows high risk please get an ATK or PCR check right away',
+    alert_3: '3. If you test result shows high risk please get an ATK or PCR check right away.',
     agree: 'Agree',
     cancel: 'Disagree',
     check_ip_enable: 'Sorry, the CV19 EYE TEST DEMO is only for Chinese users located in China. (The VPN users outside China are forbidden!)',
     check_max_test: 'Sorry, the free tests have run out today，please try again tomorrow.',
     cooperate: 'Cooperate with',
-    caution_intro: 'To protect personal privacy, wear a mask before testing'
+    caution_intro: 'To protect personal privacy, wear a mask before testing.'
   },
   login: {
     input_phone: 'Please enter mobile',
@@ -87,9 +87,9 @@ export default {
     next: 'Next',
     uploadMissing: 'Please upload image',
     tip_0: '1. Please take photos of your eyes in the order of forward, left, right and up, or select four eye photos from different angles on the phone, and manually align them according to the example photo, and upload them to get the test results.',
-    tip_1: '2. The tester needs to shoot in a bright environment with sufficient light, and the red background should be avoid;',
-    tip_2: '3. The tester’s eyes cannot be made-up, contact lenses cannot be worn, and cannot be covered by hair;',
-    tip_3: '4. The camera should not be less than 3 million pixels, and the eye photo resolution should be above 1900X800 , and all camera filter functions are turned off;',
+    tip_1: '2. The tester needs to shoot in a bright environment with sufficient light, and the red background should be avoid.',
+    tip_2: '3. The tester’s eyes cannot be made-up, contact lenses cannot be worn, and cannot be covered by hair.',
+    tip_3: '4. The camera should not be less than 3 million pixels, and the eye photo resolution should be above 1900X800 , and all camera filter functions are turned off.',
     tip_4: '5.  After shooting, you need to follow the instructions on the page to manually zoom, move and crop the eye photos, and the cropped eye photos cannot have a background.',
     step_2_tip_1: 'Please take off the glasses or lens, ensure referring to the left examples and upload the eye-selfie images.  Using other images may lead to the error test result.',
   },
