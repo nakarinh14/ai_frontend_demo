@@ -5,10 +5,10 @@
         <router-link class="header-link" to="/index" tag="span">
           <img src="../../assets/icons/tabbar/home_active.png" class="header-icon"/>
         </router-link>
-        <a class="header-link" style="margin-left: 0.6rem" href="http://aimomics.org/">
+        <a class="header-link" style="margin-left: 0.3rem" href="http://aimomics.org/">
           <img src="../../assets/image/logo.png" class="header-logo"/>
         </a>
-        <img style="margin-left: 0.25rem" src="../../assets/image/demo_aietech_logo.png" class="header-logo1"/>
+        <img src="../../assets/image/demo_aietech_logo.png" class="header-logo1"/>
       </div>
       <router-link class="header-link" to="/mine" tag="span">
         <img src="../../assets/icons/tabbar/mine_active.png" class="header-icon"/>
@@ -48,6 +48,24 @@
         <van-uploader :after-read="handleInput" accept="image/*" class="order-uploader">
   　　　　<van-button size="normal" class="order-button">{{$t('order.step_1_choose')}}</van-button>
     　　</van-uploader>
+      </div>
+      <div style="margin-top: 40px; margin-bottom: 10px">
+        <div class="order-preview-image" >
+          <span class="image-title">{{ $t('multi.img0') }}:</span>
+          <img src="../../assets/image/real_eye_sample/forward-eye.jpg" class="real-sample-preview"/>
+        </div>
+        <div class="order-preview-image" >
+          <span class="image-title">{{ $t('multi.img1') }}:</span>
+          <img src="../../assets/image/real_eye_sample/left-eye.jpg" class="real-sample-preview"/>
+        </div>
+        <div class="order-preview-image" >
+          <span class="image-title">{{ $t('multi.img2') }}:</span>
+          <img src="../../assets/image/real_eye_sample/right-eye.jpg" class="real-sample-preview"/>
+        </div>
+        <div class="order-preview-image" >
+          <span class="image-title">{{ $t('multi.img3') }}:</span>
+          <img src="../../assets/image/real_eye_sample/up-eye.jpg" class="real-sample-preview"/>
+        </div>
       </div>
       <div class="order-tip-text" v-if="noImage && imgIndex == 0" style="margin-top: 30px;">
         {{$t('home.alert')}}<br/>
@@ -736,6 +754,10 @@ body{
       }
       .order-submit{
         width: 152.5px;
+        height: 50px;
+      }
+      .real-sample-preview{
+        width: 180.5px;
         height: 50px;
       }
     }

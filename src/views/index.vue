@@ -87,7 +87,8 @@ export default {
           height: 10px;
         }
         .header-logo1{
-          height: 14px;
+          margin-left: -0.4rem;
+          height: 21px;
           padding-bottom: 1px;
         }
       }
