@@ -15,7 +15,7 @@ export default {
     alert_3: '3. If you test result shows high risk please get an ATK or PCR check right away.',
     agree: 'Agree',
     cancel: 'Disagree',
-    check_ip_enable: 'Sorry, the CV19 EYE TEST DEMO is only for Chinese users located in China. (The VPN users outside China are forbidden!)',
+    check_ip_enable: 'Sorry, the COVID-19 AIETECH EYE TEST is only usable for users located in Thailand.',
     check_max_test: 'Sorry, the free tests have run out today，please try again tomorrow.',
     cooperate: 'Cooperate with',
     caution_intro: 'To protect personal privacy, wear a mask before testing.'
