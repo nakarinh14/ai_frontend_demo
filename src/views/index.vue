@@ -15,6 +15,9 @@
 export default {
   name: "index",
   created() {
+    if (localStorage.getItem('user') === 'null') {
+      localStorage.removeItem('user')
+    }
     this.$http
         .get(`/api/property/all`)
         .then(res => {
