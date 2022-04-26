@@ -195,6 +195,11 @@
         </div>
       </div>
       <van-button size="normal" class="order-button" @click="handleReUpload">{{$t('order.step_5_rePredict')}}</van-button>
+      <div class="display-id">
+        <p style="margin-right: 0.2rem; color: white; font-size: 0.4rem; font-weight: bold;">
+          RN: {{ this.order_id.slice(-6) }}
+        </p>
+      </div>
 <!--      <div class="order-result-tip" v-if="!cv19_low_risk">{{$t('order.step_6_tip')}}</div>-->
 <!--      <a class="order-result-tip-a" v-if="!cv19_low_risk" href="mailto: service@aimomics.org">service@aimomics.org</a>-->
     </div>
@@ -824,5 +829,12 @@ body{
     font-weight: bold;
     height: 30px;
   }
+}
+.display-id{
+  width:100%;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: flex-end;
 }
 </style>

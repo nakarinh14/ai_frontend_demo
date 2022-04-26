@@ -154,6 +154,12 @@
         </div>
       </div>
       <van-button size="normal" class="order-button" @click="handleBack">{{$t('order.step_5_rePredict')}}</van-button>
+      <div class="display-id">
+        <p style="margin-right: 0.2rem; color: white; font-size: 0.4rem; font-weight: bold;">
+          RN: {{ this.order_id.slice(-6) }}
+        </p>
+      </div>
+
 <!--      <div class="order-result-tip" v-if="!cv19_low_risk">{{$t('order.step_6_tip')}}</div>-->
 <!--      <a class="order-result-tip-a" v-if="!cv19_low_risk" href="mailto: service@aimomics.org">service@aimomics.org</a>-->
 
@@ -174,11 +180,11 @@
 </template>
 
 <script>
-import { checkLogin, isNormalUser, dataURLtoFile } from "../../utils/util";
-import { getLanguage } from "../../i18n/index";
-import * as imageConversion from 'image-conversion';
-import PhotoClip from 'photoclip';
-import EXIF from 'exif-js';
+import { checkLogin, isNormalUser, dataURLtoFile } from '../../utils/util'
+import { getLanguage } from '../../i18n/index'
+import * as imageConversion from 'image-conversion'
+import PhotoClip from 'photoclip'
+import EXIF from 'exif-js'
 export default {
   name: 'home',
   data () {
@@ -191,28 +197,28 @@ export default {
       isNormalUser: isNormalUser(),
       step: 0,
       uploadImage: null,
-      currentCircle:0,
+      currentCircle: 0,
       circleInterval: null,
       photo_clip: null,
       gradientColor: {
         '0%': '#3fecff',
-        '100%': '#6149f6',
+        '100%': '#6149f6'
       },
       gradientColorHealthy: {
         '0%': '#07c160',
         '50%': '#ff976a',
-        '100%': '#ee0a24',
+        '100%': '#ee0a24'
       },
       gradientColorCV19: {
         '0%': '#07c160',
         '50%': '#ff976a',
-        '100%': '#ee0a24',
+        '100%': '#ee0a24'
       },
       maxImageSize: 4 * 1024 * 1024,
-      result_healthy: {"label": "Healthy", "prob": "0"},
-      result_cv19: {"label": "CV19", "prob": "0"},
-      result_pulmonary: {"label": "Pulmonary", "prob": "0"},
-      result_ocular: {"label": "Ocular", "prob": "0"},
+      result_healthy: { 'label': 'Healthy', 'prob': '0' },
+      result_cv19: { 'label': 'CV19', 'prob': '0' },
+      result_pulmonary: { 'label': 'Pulmonary', 'prob': '0' },
+      result_ocular: { 'label': 'Ocular', 'prob': '0' },
       ip_enable: true,
       max_test_enable: true,
       showIpDisable: false,
@@ -225,25 +231,25 @@ export default {
       handleSubmitExtraLoading: false,
       needSubmitForm: false,
       order_id: null,
-      cur_select_index: 0,
+      cur_select_index: 0
     }
   },
   computed: {
-    text() {
-      return this.currentCircle.toFixed(0) + '%';
+    text () {
+      return this.currentCircle.toFixed(0) + '%'
     },
-    cv19_low_risk() {
+    cv19_low_risk () {
       if (parseFloat(this.result_cv19.prob) >= 50) {
         return false
       } else {
         return true
       }
-    },
+    }
   },
-  created() {
-    this.checkNeedLogin();
-    this.checkIpEnable();
-    this.checkMaxTest();
+  created () {
+    this.checkNeedLogin()
+    this.checkIpEnable()
+    this.checkMaxTest()
   },
   methods: {
     checkNeedLogin () {
@@ -253,37 +259,37 @@ export default {
           if (response.data.code == 0) {
             response.data.data.forEach(item => {
               if (item.property == 'UPLOAD_NEED_LOGIN') {
-                this.uploadNeedLogin = item.is_active;
+                this.uploadNeedLogin = item.is_active
               } else if (item.property == 'ORDER_TIP') {
                 if (item.extra !== '' && item.extra != null) {
-                  const temp = JSON.parse(item.extra);
+                  const temp = JSON.parse(item.extra)
                   temp.forEach((item, index) => {
-                    item.options = item.options != null ? item.options.split(';') : [];
-                    item.options_hk = item.options_hk != null ? item.options_hk.split(';') : [];
-                    item.options_en = item.options_en != null ? item.options_en.split(';') : [];
-                    this.extra_order_tip_form[index] = null;
+                    item.options = item.options != null ? item.options.split(';') : []
+                    item.options_hk = item.options_hk != null ? item.options_hk.split(';') : []
+                    item.options_en = item.options_en != null ? item.options_en.split(';') : []
+                    this.extra_order_tip_form[index] = null
                   })
-                  this.extra_order_tip = temp;
+                  this.extra_order_tip = temp
                 }
                 if (item.is_active) {
-                  this.needSubmitForm = true;
+                  this.needSubmitForm = true
                 } else {
-                  this.needSubmitForm = false;
+                  this.needSubmitForm = false
                 }
               }
-            });
+            })
           }
         })
     },
     orderTipOnOpen (_, index) {
-      this.extra_order_tip_columns = this.language === 'zh' ? this.extra_order_tip[index].options : this.language === 'hk' ? this.extra_order_tip[index].options_hk : this.extra_order_tip[index].options_en;
-      this.cur_select_index = index;
-      this.extra_order_tip_show = true;
+      this.extra_order_tip_columns = this.language === 'zh' ? this.extra_order_tip[index].options : this.language === 'hk' ? this.extra_order_tip[index].options_hk : this.extra_order_tip[index].options_en
+      this.cur_select_index = index
+      this.extra_order_tip_show = true
     },
     orderTipOnConfirm (val) {
-      this.extra_order_tip_form[this.cur_select_index] = val;
-      this.extra_order_tip_columns = [];
-      this.extra_order_tip_show = false;
+      this.extra_order_tip_form[this.cur_select_index] = val
+      this.extra_order_tip_columns = []
+      this.extra_order_tip_show = false
     },
     // 检测ip为境内
     checkIpEnable () {
@@ -291,7 +297,7 @@ export default {
         .get(`/api/order/check_ip_enable`)
         .then(res => {
           if (res.data.code == 0) {
-            this.ip_enable = res.data.data.enable;
+            this.ip_enable = res.data.data.enable
           }
         })
     },
@@ -301,28 +307,28 @@ export default {
         .get(`/api/order/check_max_test`)
         .then(res => {
           if (res.data.code == 0) {
-            this.max_test_enable = res.data.data.enable;
+            this.max_test_enable = res.data.data.enable
           }
         })
     },
     handleCheck (e) {
-      e.preventDefault();
+      e.preventDefault()
       if (!this.ip_enable) {
-        this.showIpDisable = true;
+        this.showIpDisable = true
       } else if (!this.max_test_enable) {
-        this.showMaxTestDisable = true;
+        this.showMaxTestDisable = true
       }
     },
     handleInput (file) {
-      this.step = 1;
-      setTimeout(()=>{
+      this.step = 1
+      setTimeout(() => {
         if (this.photo_clip != null) {
-          this.photo_clip.destroy();
+          this.photo_clip.destroy()
         }
-        let that = this;
-        EXIF.getData(file.file,  function() {
-          EXIF.getAllTags(this);
-          let orient = EXIF.getTag(this, 'Orientation');
+        let that = this
+        EXIF.getData(file.file, function () {
+          EXIF.getAllTags(this)
+          let orient = EXIF.getTag(this, 'Orientation')
           that.photo_clip = new PhotoClip('#clipArea', {
             size: [285, 75],
             outputSize: [950, 250],
@@ -334,158 +340,158 @@ export default {
               height: 2000,
               quality: 1
             }
-          });
-          that.photo_clip.load(file.file);
+          })
+          that.photo_clip.load(file.file)
           if (orient === 6) {
             setTimeout(() => {
-              that.photo_clip.rotate(-90, 0);
+              that.photo_clip.rotate(-90, 0)
             }, 1000)
           }
         })
       })
     },
-    handleNext() {
+    handleNext () {
       this.step = 2
       this.uploadImage = this.photo_clip.clip()
-      this.photo_clip.destroy();
-      this.photo_clip = null;
+      this.photo_clip.destroy()
+      this.photo_clip = null
     },
-    handleBack() {
+    handleBack () {
       this.step = 0
-      this.photo_clip.destroy();
-      this.photo_clip = null;
-      this.checkMaxTest();
-      this.checkIpEnable();
+      this.photo_clip.destroy()
+      this.photo_clip = null
+      this.checkMaxTest()
+      this.checkIpEnable()
     },
     handleUpload () {
       if (this.submitLoading) {
-        return;
+        return
       }
-      this.submitLoading = true;
-      this.submitSuccess = false;
-      this.currentCircle = 0;
-      this.step = 3;
-      let file = dataURLtoFile(this.uploadImage, 'covid.jpg');
+      this.submitLoading = true
+      this.submitSuccess = false
+      this.currentCircle = 0
+      this.step = 3
+      let file = dataURLtoFile(this.uploadImage, 'covid.jpg')
       this.circleInterval = setInterval(() => {
         if (this.currentCircle < 99) {
-          this.currentCircle++;
+          this.currentCircle++
         } else if (this.currentCircle >= 99 && this.submitSuccess) {
-          this.currentCircle = 100;
+          this.currentCircle = 100
           if (this.needSubmitForm) {
-            this.step = 5;
+            this.step = 5
           } else {
-            this.step = 6;
+            this.step = 6
           }
-          clearInterval(this.circleInterval);
+          clearInterval(this.circleInterval)
         }
-      },50)
+      }, 50)
 
-      let formData = new FormData(); //构造一个 FormData，把后台需要发送的参数添加
+      let formData = new FormData() // 构造一个 FormData，把后台需要发送的参数添加
       formData.append('type', '1')
       if (localStorage.getItem('uuid') != null) {
-        formData.append('uuid', localStorage.getItem('uuid'));
+        formData.append('uuid', localStorage.getItem('uuid'))
       }
       if (localStorage.getItem('region') != null) {
-        formData.append('region', localStorage.getItem('region'));
+        formData.append('region', localStorage.getItem('region'))
       }
       if (file.size > this.maxImageSize) {
-        imageConversion.compressAccurately(file, this.maxImageSize / 1024).then(res=>{
-          //The res in the promise is a compressed Blob type (which can be treated as a File type) file;
-          formData.append('img0', res); //接口需要传的参数
-          this.upload(formData);
+        imageConversion.compressAccurately(file, this.maxImageSize / 1024).then(res => {
+          // The res in the promise is a compressed Blob type (which can be treated as a File type) file;
+          formData.append('img0', res) // 接口需要传的参数
+          this.upload(formData)
         })
       } else {
-        formData.append('img0', file); //接口需要传的参数
-        this.upload(formData);
+        formData.append('img0', file) // 接口需要传的参数
+        this.upload(formData)
       }
     },
-    upload(formdata) {
+    upload (formdata) {
       this.$http
-        .post(`/api/order/check`, formdata, {timeout: 120000})
+        .post(`/api/order/check`, formdata, { timeout: 120000 })
         .then(response => {
           if (response.data.code == 0) {
-            this.submitSuccess = true;
-            let ret = response.data.data;
+            this.submitSuccess = true
+            let ret = response.data.data
             this.result_healthy.prob = Number(ret.healthy)
             this.result_cv19.prob = Number(ret.cv19)
             this.result_pulmonary.prob = Number(ret.pulmonary)
             this.result_ocular.prob = Number(ret.ocular)
             this.order_id = ret.id
             if (ret.uuid != null) {
-              localStorage.setItem("uuid", ret.uuid)
+              localStorage.setItem('uuid', ret.uuid)
             }
             if (!this.needSubmitForm && parseFloat(this.result_cv19.prob) >= 50) {
-              this.showHighRisk = true;
+              this.showHighRisk = true
             }
-            this.$http.post(`/api/record/send`, { event: 'single_test',  message: '快速检测成功', user_name: localStorage.getItem('uuid') || null });
-            this.submitLoading = false;
+            this.$http.post(`/api/record/send`, { event: 'single_test', message: '快速检测成功', user_name: localStorage.getItem('uuid') || null })
+            this.submitLoading = false
           } else {
-            this.$http.post(`/api/record/send`, { event: 'single_test',  message: '快速检测失败', user_name: localStorage.getItem('uuid') || null });
-            clearInterval(this.circleInterval);
-            this.currentCircle = 0;
-            this.submitLoading = false;
-            this.step = 3;
+            this.$http.post(`/api/record/send`, { event: 'single_test', message: '快速检测失败', user_name: localStorage.getItem('uuid') || null })
+            clearInterval(this.circleInterval)
+            this.currentCircle = 0
+            this.submitLoading = false
+            this.step = 3
           }
         }).catch(error => {
-          clearInterval(this.circleInterval);
-          this.currentCircle = 0;
-          this.submitLoading = false;
-          this.step = 3;
-        });
+          clearInterval(this.circleInterval)
+          this.currentCircle = 0
+          this.submitLoading = false
+          this.step = 3
+        })
     },
     handleSubmitExtra () {
       if (this.handleSubmitExtraLoading) {
-        return;
+        return
       }
       const formdata = {
         order_id: this.order_id,
-        extra: '',
+        extra: ''
       }
       if (this.isLogin) {
-        formdata.user_id = localStorage.getItem('user').uid;
+        formdata.user_id = localStorage.getItem('user').uid
       } else {
-        formdata.uuid = localStorage.getItem('uuid');
+        formdata.uuid = localStorage.getItem('uuid')
       }
       formdata.extra = JSON.stringify(this.extra_order_tip.map((item, index) => {
         return {
           key: this.language === 'zh' ? item.title : this.language === 'hk' ? item.title_hk : item.title_en,
-          value: this.extra_order_tip_form[index],
+          value: this.extra_order_tip_form[index]
         }
       }))
       this.$http
         .post(`/api/order/updateExtra`, formdata)
         .then(response => {
-           if (response.data.code == 0) {
-             if (parseFloat(this.result_cv19.prob) >= 50) {
-              this.showHighRisk = true;
+          if (response.data.code == 0) {
+            if (parseFloat(this.result_cv19.prob) >= 50) {
+              this.showHighRisk = true
             }
-             this.step = 6;
-           } else {
-             this.$toast({
+            this.step = 6
+          } else {
+            this.$toast({
               mask: false,
               message: 'Submit Error'
-            });
-           }
+            })
+          }
         }).catch(error => {
           this.$toast({
             mask: false,
             message: 'Submit Error'
-          });
-        });
+          })
+        })
     },
     handleLogin () {
-      this.$router.push("/login");
+      this.$router.push('/login')
     },
     parseInt (value) {
       return parseInt(value)
     }
   },
-  destroyed() {
+  destroyed () {
     if (this.circleInterval != null) {
-      clearInterval(this.circleInterval);
+      clearInterval(this.circleInterval)
     }
     if (this.photo_clip != null) {
-      this.photo_clip.destroy();
+      this.photo_clip.destroy()
     }
   }
 }
@@ -719,5 +725,12 @@ body{
     font-weight: bold;
     height: 30px;
   }
+}
+.display-id{
+  width:100%;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: flex-end;
 }
 </style>
