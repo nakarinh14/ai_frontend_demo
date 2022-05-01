@@ -33,14 +33,37 @@
         <van-button size="normal" class="order-button">{{$t('order.step_0_choose')}}</van-button>
       </van-uploader>
       <van-button size="normal" class="order-button" style="margin-top:30px;" @click="handleCheck" v-if="(!max_test_enable || !ip_enable) && (!uploadNeedLogin || isLogin)">{{$t('order.step_0_choose')}}</van-button>
-      <div class="order-tip-text" style="margin-top: 30px;">
-        {{$t('home.alert')}}<br/>
-        {{$t('order.tip_0')}}<br/><br/>
-        {{$t('multi.tip_1')}}<br/><br/>
-        {{$t('multi.tip_2')}}<br/><br/>
-        {{$t('multi.tip_3')}}<br/><br/>
-        {{$t('multi.tip_4')}}<br/>
+      <b style="color: #f5db12; margin-top: 50px; font-size: 0.5rem">
+        {{ $t('order.new_caution_title') }}
+      </b>
+      <div>
+      <p style="color: #f5db12; margin-top: 0.4rem; font-size: 0.5rem;" >
+        {{ $t('order.new_caution_1') }}
+      </p>
+      <p style="color: #f5db12; margin-top: 0.8rem; font-size: 0.5rem" >
+        1.) {{ $t('order.new_caution_2') }}
+      </p>
+      <p style="color: #f5db12; margin-top: 10px; font-size: 0.5rem" >
+        2.) {{ $t('order.new_caution_3') }}
+      </p>
+      <p style="color: #f5db12; margin-top: 10px; font-size: 0.5rem" >
+        3.) {{ $t('order.new_caution_4') }}
+      </p>
+      <p style="color: #f5db12; margin-top: 10px; font-size: 0.5rem" >
+        4.) {{ $t('order.new_caution_5') }}
+      </p>
+      <p style="color: #f5db12; margin-top: 10px; font-size: 0.5rem" >
+        5.) {{ $t('order.new_caution_6') }}
+      </p>
       </div>
+<!--      <div class="order-tip-text" style="margin-top: 30px;">-->
+<!--        {{$t('home.alert')}}<br/>-->
+<!--        {{$t('order.tip_0')}}<br/><br/>-->
+<!--        {{$t('multi.tip_1')}}<br/><br/>-->
+<!--        {{$t('multi.tip_2')}}<br/><br/>-->
+<!--        {{$t('multi.tip_3')}}<br/><br/>-->
+<!--        {{$t('multi.tip_4')}}<br/>-->
+<!--      </div>-->
     </div>
     <div class="order-content" v-if="step == 1">
       <div class="order-reset">
@@ -143,6 +166,7 @@
             <span style="color: red; font-weight: bold;">{{$t('order.high_risk_tip_0')}}</span>
             <span style="color: red;">{{$t('order.high_risk_tip_1')}}</span>
           </div>
+          <span style="margin-top: 0.1rem; font-size: 0.3rem; font-weight: bold">{{ this.order_timestamp }}</span>
         </div>
         <div class="result-item" v-if="!isNormalUser">
           <span class="result-label">{{result_pulmonary.label}}</span>
@@ -183,6 +207,8 @@
 import { checkLogin, isNormalUser, dataURLtoFile } from '../../utils/util'
 import { getLanguage } from '../../i18n/index'
 import * as imageConversion from 'image-conversion'
+import { subHours, format } from 'date-fns'
+import { enUS as dateLocaleEn, th as dateLocaleTh } from 'date-fns/locale'
 import PhotoClip from 'photoclip'
 import EXIF from 'exif-js'
 export default {
@@ -231,7 +257,8 @@ export default {
       handleSubmitExtraLoading: false,
       needSubmitForm: false,
       order_id: null,
-      cur_select_index: 0
+      cur_select_index: 0,
+      order_timestamp: null
     }
   },
   computed: {
@@ -417,6 +444,8 @@ export default {
             this.result_pulmonary.prob = Number(ret.pulmonary)
             this.result_ocular.prob = Number(ret.ocular)
             this.order_id = ret.id
+            const dateFormatLocale = this.language === 'th' ? dateLocaleTh : dateLocaleEn
+            this.order_timestamp = format(subHours(new Date(ret.create_date), 1), 'dd MMMM yyyy HH:mm:ss', { locale: dateFormatLocale })
             if (ret.uuid != null) {
               localStorage.setItem('uuid', ret.uuid)
             }
@@ -516,7 +545,7 @@ body{
     height:83%;
     width:160%;
     border-radius:50% 50% 0 0;
-    background: linear-gradient(#1989fa, #c0ddfa);
+    background: linear-gradient(#1989fa, #89c4ff);
   }
   .order-title {
     width: 100%;

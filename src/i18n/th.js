@@ -72,7 +72,14 @@ export default {
     high_risk_tip_4: 'กดตรงนี้',
     high_risk_tip_5: 'เพื่อส่งข้อความ',
     high_risk_tip_confirm: 'ยืนยัน',
-    not_empty: 'ไม่สามารถเว้นว่างได้'
+    not_empty: 'ไม่สามารถเว้นว่างได้',
+    new_caution_title: 'คำเตือน',
+    new_caution_1: '5 กรณีดังกล่าวนี้จะไม่สามารถ่ายรูปได้:',
+    new_caution_2: 'พื้นหลังเป็นสีดำหรือสีแดง',
+    new_caution_3: 'แสงไม่สว่างพอ',
+    new_caution_4: 'เปิดแฟลชกล้องหรือมีการใช้ฟิลเตอร์รูปสี',
+    new_caution_5: 'ใส่คอนแทคเลนส์หรือใส่แว่น',
+    new_caution_6: 'หน้ากากใกล้ชิดตา'
   },
   multi: {
     img0: 'กลาง',

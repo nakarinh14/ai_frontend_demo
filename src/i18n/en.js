@@ -75,6 +75,13 @@ export default {
     high_risk_tip_4: 'here',
     high_risk_tip_5: ' to submit your message now.',
     high_risk_tip_confirm: 'CONFIRM',
+    new_caution_title: 'CAUTION',
+    new_caution_1: 'The following 5 cases are not allowed to take pictures:',
+    new_caution_2: 'The background is black or red.',
+    new_caution_3: 'The light is not bright enough.',
+    new_caution_4: 'Flash light or color light.',
+    new_caution_5: 'Carry contact lenses or glasses.',
+    new_caution_6: 'Mask is too close to the eyes.',
     not_empty: 'not empty'
   },
   multi: {

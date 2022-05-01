@@ -67,14 +67,34 @@
           <img src="../../assets/image/real_eye_sample/up-eye.jpg" class="real-sample-preview"/>
         </div>
       </div>
-      <div class="order-tip-text" v-if="noImage && imgIndex == 0" style="margin-top: 30px;">
-        {{$t('home.alert')}}<br/>
-        {{$t('multi.tip_0')}}<br/><br/>
-        {{$t('multi.tip_1')}}<br/><br/>
-        {{$t('multi.tip_2')}}<br/><br/>
-        {{$t('multi.tip_3')}}<br/><br/>
-        {{$t('multi.tip_4')}}<br/>
+      <div>
+        <p style="color: #f5db12; margin-top: 0.4rem; font-size: 0.5rem;" >
+          {{ $t('order.new_caution_1') }}
+        </p>
+        <p style="color: #f5db12; margin-top: 0.8rem; font-size: 0.5rem" >
+          1.) {{ $t('order.new_caution_2') }}
+        </p>
+        <p style="color: #f5db12; margin-top: 10px; font-size: 0.5rem" >
+          2.) {{ $t('order.new_caution_3') }}
+        </p>
+        <p style="color: #f5db12; margin-top: 10px; font-size: 0.5rem" >
+          3.) {{ $t('order.new_caution_4') }}
+        </p>
+        <p style="color: #f5db12; margin-top: 10px; font-size: 0.5rem" >
+          4.) {{ $t('order.new_caution_5') }}
+        </p>
+        <p style="color: #f5db12; margin-top: 10px; font-size: 0.5rem" >
+          5.) {{ $t('order.new_caution_6') }}
+        </p>
       </div>
+<!--      <div class="order-tip-text" v-if="noImage && imgIndex == 0" style="margin-top: 30px;">-->
+<!--        {{$t('home.alert')}}<br/>-->
+<!--        {{$t('multi.tip_0')}}<br/><br/>-->
+<!--        {{$t('multi.tip_1')}}<br/><br/>-->
+<!--        {{$t('multi.tip_2')}}<br/><br/>-->
+<!--        {{$t('multi.tip_3')}}<br/><br/>-->
+<!--        {{$t('multi.tip_4')}}<br/>-->
+<!--      </div>-->
       <div class="order-clip" id="clipArea0" v-if="!noImage && imgIndex == 0"></div>
       <div class="order-clip" id="clipArea1" v-if="!noImage && imgIndex == 1"></div>
       <div class="order-clip" id="clipArea2" v-if="!noImage && imgIndex == 2"></div>
@@ -184,6 +204,7 @@
             <span style="color: red; font-weight: bold;">{{$t('order.high_risk_tip_0')}}</span>
             <span style="color: red;">{{$t('order.high_risk_tip_1')}}</span>
           </div>
+          <span style="margin-top: 0.1rem; font-size: 0.3rem; font-weight: bold">{{ this.order_timestamp }}</span>
         </div>
         <div class="result-item" v-if="!isNormalUser">
           <span class="result-label">{{result_pulmonary.label}}</span>
@@ -228,6 +249,8 @@ import { checkLogin, isNormalUser, dataURLtoFile } from "../../utils/util";
 import { getLanguage } from "../../i18n/index";
 import * as imageConversion from 'image-conversion';
 import PhotoClip from 'photoclip'
+import { enUS as dateLocaleEn, th as dateLocaleTh } from "date-fns/locale";
+import { format, subHours } from "date-fns";
 export default {
   name: 'home',
   data () {
@@ -468,6 +491,8 @@ export default {
             this.result_cv19.prob = Number(ret.cv19)
             this.result_pulmonary.prob = Number(ret.pulmonary)
             this.result_ocular.prob = Number(ret.ocular)
+            const dateFormatLocale = this.language === 'th' ? dateLocaleTh : dateLocaleEn
+            this.order_timestamp = format(subHours(new Date(ret.create_date), 1), 'dd MMMM yyyy HH:mm:ss', { locale: dateFormatLocale })
             this.order_id = ret.id
             if (ret.uuid != null) {
               localStorage.setItem("uuid", ret.uuid)
@@ -586,7 +611,7 @@ body{
     height:83%;
     width:160%;
     border-radius:50% 50% 0 0;
-    background: linear-gradient(#1989fa, #c0ddfa);
+    background: linear-gradient(#1989fa, #89c4ff);
   }
   .order-title {
     width: 100%;
