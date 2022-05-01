@@ -245,12 +245,12 @@
 
 <script>
 
-import { checkLogin, isNormalUser, dataURLtoFile } from "../../utils/util";
-import { getLanguage } from "../../i18n/index";
-import * as imageConversion from 'image-conversion';
+import { checkLogin, isNormalUser, dataURLtoFile } from '../../utils/util'
+import { getLanguage } from '../../i18n/index'
+import * as imageConversion from 'image-conversion'
 import PhotoClip from 'photoclip'
-import { enUS as dateLocaleEn, th as dateLocaleTh } from "date-fns/locale";
-import { format, subHours } from "date-fns";
+import { enUS as dateLocaleEn, th as dateLocaleTh } from 'date-fns/locale'
+import { format, subHours } from 'date-fns'
 export default {
   name: 'home',
   data () {
@@ -264,29 +264,29 @@ export default {
       step: 0,
       imgIndex: 0,
       noImage: true,
-      currentCircle:0,
+      currentCircle: 0,
       circleInterval: null,
       photoClips: [null, null, null, null],
       uploadImage: [null, null, null, null],
       gradientColor: {
         '0%': '#3fecff',
-        '100%': '#6149f6',
+        '100%': '#6149f6'
       },
       gradientColorHealthy: {
         '0%': '#07c160',
         '50%': '#ff976a',
-        '100%': '#ee0a24',
+        '100%': '#ee0a24'
       },
       gradientColorCV19: {
         '0%': '#07c160',
         '50%': '#ff976a',
-        '100%': '#ee0a24',
+        '100%': '#ee0a24'
       },
       maxImageSize: 4 * 1024 * 1024,
-      result_healthy: {"label": "Healthy", "prob": "0"},
-      result_cv19: {"label": "CV19", "prob": "0"},
-      result_pulmonary: {"label": "Pulmonary", "prob": "0"},
-      result_ocular: {"label": "Ocular", "prob": "0"},
+      result_healthy: { 'label': 'Healthy', 'prob': '0' },
+      result_cv19: { 'label': 'CV19', 'prob': '0' },
+      result_pulmonary: { 'label': 'Pulmonary', 'prob': '0' },
+      result_ocular: { 'label': 'Ocular', 'prob': '0' },
       ip_enable: true,
       max_test_enable: true,
       showIpDisable: false,
@@ -299,25 +299,25 @@ export default {
       handleSubmitExtraLoading: false,
       needSubmitForm: false,
       order_id: null,
-      cur_select_index: 0,
+      cur_select_index: 0
     }
   },
   computed: {
-    text() {
-      return this.currentCircle.toFixed(0) + '%';
+    text () {
+      return this.currentCircle.toFixed(0) + '%'
     },
-    cv19_low_risk() {
+    cv19_low_risk () {
       if (parseFloat(this.result_cv19.prob) >= 50) {
         return false
       } else {
         return true
       }
-    },
+    }
   },
-  created() {
-    this.checkNeedLogin();
-    this.checkIpEnable();
-    this.checkMaxTest();
+  created () {
+    this.checkNeedLogin()
+    this.checkIpEnable()
+    this.checkMaxTest()
   },
   methods: {
     checkNeedLogin () {
@@ -330,34 +330,34 @@ export default {
                 this.uploadNeedLogin = item.is_active
               } else if (item.property == 'ORDER_TIP') {
                 if (item.extra !== '' && item.extra != null) {
-                  const temp = JSON.parse(item.extra);
+                  const temp = JSON.parse(item.extra)
                   temp.forEach((item, index) => {
-                    item.options = item.options != null ? item.options.split(';') : [];
-                    item.options_hk = item.options_hk != null ? item.options_hk.split(';') : [];
-                    item.options_en = item.options_en != null ? item.options_en.split(';') : [];
-                    this.extra_order_tip_form[index] = null;
+                    item.options = item.options != null ? item.options.split(';') : []
+                    item.options_hk = item.options_hk != null ? item.options_hk.split(';') : []
+                    item.options_en = item.options_en != null ? item.options_en.split(';') : []
+                    this.extra_order_tip_form[index] = null
                   })
-                  this.extra_order_tip = temp;
+                  this.extra_order_tip = temp
                 }
                 if (item.is_active) {
-                  this.needSubmitForm = true;
+                  this.needSubmitForm = true
                 } else {
-                  this.needSubmitForm = false;
+                  this.needSubmitForm = false
                 }
               }
-            });
+            })
           }
         })
     },
     orderTipOnOpen (_, index) {
-      this.extra_order_tip_columns = this.language === 'zh' ? this.extra_order_tip[index].options : this.language === 'hk' ? this.extra_order_tip[index].options_hk : this.extra_order_tip[index].options_en;
-      this.cur_select_index = index;
-      this.extra_order_tip_show = true;
+      this.extra_order_tip_columns = this.language === 'zh' ? this.extra_order_tip[index].options : this.language === 'hk' ? this.extra_order_tip[index].options_hk : this.extra_order_tip[index].options_en
+      this.cur_select_index = index
+      this.extra_order_tip_show = true
     },
     orderTipOnConfirm (val) {
-      this.extra_order_tip_form[this.cur_select_index] = val;
-      this.extra_order_tip_columns = [];
-      this.extra_order_tip_show = false;
+      this.extra_order_tip_form[this.cur_select_index] = val
+      this.extra_order_tip_columns = []
+      this.extra_order_tip_show = false
     },
     // 检测ip为境内
     checkIpEnable () {
@@ -365,7 +365,7 @@ export default {
         .get(`/api/order/check_ip_enable`)
         .then(res => {
           if (res.data.code == 0) {
-            this.ip_enable = res.data.data.enable;
+            this.ip_enable = res.data.data.enable
           }
         })
     },
@@ -375,26 +375,26 @@ export default {
         .get(`/api/order/check_max_test`)
         .then(res => {
           if (res.data.code == 0) {
-            this.max_test_enable = res.data.data.enable;
+            this.max_test_enable = res.data.data.enable
           }
         })
     },
     handleCheck (e) {
-      e.preventDefault();
+      e.preventDefault()
       if (!this.ip_enable) {
-        this.showIpDisable = true;
+        this.showIpDisable = true
       } else if (!this.max_test_enable) {
-        this.showMaxTestDisable = true;
+        this.showMaxTestDisable = true
       }
     },
     handleInput (file) {
-      this.noImage = false;
+      this.noImage = false
       this.$forceUpdate()
       const index = this.imgIndex
       setTimeout(() => {
         if (this.photoClips[index] != null) {
-          this.photoClips[index].destroy();
-          this.photoClips[index] = null;
+          this.photoClips[index].destroy()
+          this.photoClips[index] = null
         }
         this.photoClips[index] = new PhotoClip('#clipArea' + index, {
           size: [285, 75],
@@ -407,86 +407,86 @@ export default {
             height: 2000,
             quality: 1
           }
-        });
-        this.photoClips[index].load(file.file);
+        })
+        this.photoClips[index].load(file.file)
       })
     },
     handleUpload () {
       if (this.submitLoading) {
-        return;
+        return
       }
-      for (let i=0; i< this.uploadImage.length;i++) {
+      for (let i = 0; i < this.uploadImage.length; i++) {
         if (this.uploadImage[i] == null) {
           this.$toast({
             mask: false,
             message: this.$t('multi.uploadMissing') + '(' + this.$t('multi.img' + i) + ')'
-          });
-          return;
+          })
+          return
         }
       }
-      this.submitLoading = true;
-      this.submitSuccess = false;
-      this.currentCircle = 0;
-      this.step = 2;
-      let formData = new FormData(); //构造一个 FormData，把后台需要发送的参数添加
+      this.submitLoading = true
+      this.submitSuccess = false
+      this.currentCircle = 0
+      this.step = 2
+      let formData = new FormData() // 构造一个 FormData，把后台需要发送的参数添加
       formData.append('type', '2')
       if (localStorage.getItem('uuid') != null) {
-        formData.append('uuid', localStorage.getItem('uuid'));
+        formData.append('uuid', localStorage.getItem('uuid'))
       }
       if (localStorage.getItem('region') != null) {
-        formData.append('region', localStorage.getItem('region'));
+        formData.append('region', localStorage.getItem('region'))
       }
-      for (let i=0; i< this.uploadImage.length;i++) {
-        let file = dataURLtoFile(this.uploadImage[i], 'covid' + i +'.jpg');
+      for (let i = 0; i < this.uploadImage.length; i++) {
+        let file = dataURLtoFile(this.uploadImage[i], 'covid' + i + '.jpg')
         if (file.size > this.maxImageSize) {
-          imageConversion.compressAccurately(file, this.maxImageSize / 1024).then(res=>{
-            formData.append('img' + i, res); //接口需要传的参数
+          imageConversion.compressAccurately(file, this.maxImageSize / 1024).then(res => {
+            formData.append('img' + i, res) // 接口需要传的参数
           })
         } else {
-          formData.append('img' + i, file); //接口需要传的参数
+          formData.append('img' + i, file) // 接口需要传的参数
         }
       }
       this.circleInterval = setInterval(() => {
         if (this.currentCircle < 99) {
-          this.currentCircle++;
+          this.currentCircle++
         } else if (this.currentCircle >= 99 && this.submitSuccess) {
-          this.currentCircle = 100;
+          this.currentCircle = 100
           if (this.needSubmitForm) {
-            this.step = 4;
+            this.step = 4
           } else {
-            this.step = 5;
+            this.step = 5
           }
-          clearInterval(this.circleInterval);
+          clearInterval(this.circleInterval)
         }
-      },50)
+      }, 50)
       setTimeout(() => {
-        this.upload(formData);
+        this.upload(formData)
       }, 1000)
     },
     handleReUpload () {
-      this.step = 0;
-      this.imgIndex = 0;
-      this.noImage = true;
-      this.checkMaxTest();
-      this.checkIpEnable();
-      this.destroyClips();
+      this.step = 0
+      this.imgIndex = 0
+      this.noImage = true
+      this.checkMaxTest()
+      this.checkIpEnable()
+      this.destroyClips()
     },
     destroyClips () {
       this.photoClips.forEach(value => {
         if (value != null) {
-          value.destroy();
+          value.destroy()
         }
       })
       this.photoClips = [null, null, null, null]
       this.uploadImage = [null, null, null, null]
     },
-    upload(formdata) {
+    upload (formdata) {
       this.$http
-        .post(`/api/order/check`, formdata, {timeout: 120000})
+        .post(`/api/order/check`, formdata, { timeout: 120000 })
         .then(response => {
           if (response.data.code == 0) {
-            this.submitSuccess = true;
-            let ret = response.data.data;
+            this.submitSuccess = true
+            let ret = response.data.data
             this.result_healthy.prob = Number(ret.healthy)
             this.result_cv19.prob = Number(ret.cv19)
             this.result_pulmonary.prob = Number(ret.pulmonary)
@@ -495,97 +495,97 @@ export default {
             this.order_timestamp = format(subHours(new Date(ret.create_date), 1), 'dd MMMM yyyy HH:mm:ss', { locale: dateFormatLocale })
             this.order_id = ret.id
             if (ret.uuid != null) {
-              localStorage.setItem("uuid", ret.uuid)
+              localStorage.setItem('uuid', ret.uuid)
             }
             if (!this.needSubmitForm && parseFloat(this.result_cv19.prob) >= 50) {
-              this.showHighRisk = true;
+              this.showHighRisk = true
             }
-            this.$http.post(`/api/record/send`, { event: 'multi_test',  message: '高级检测成功', user_name: localStorage.getItem('uuid') || null });
-            this.submitLoading = false;
+            this.$http.post(`/api/record/send`, { event: 'multi_test', message: '高级检测成功', user_name: localStorage.getItem('uuid') || null })
+            this.submitLoading = false
           } else {
-            this.$http.post(`/api/record/send`, { event: 'multi_test',  message: '高级检测失败', user_name: localStorage.getItem('uuid') || null });
-            clearInterval(this.circleInterval);
-            this.currentCircle = 0;
-            this.submitSuccess = false;
-            this.submitLoading = false;
-            this.step = 3;
+            this.$http.post(`/api/record/send`, { event: 'multi_test', message: '高级检测失败', user_name: localStorage.getItem('uuid') || null })
+            clearInterval(this.circleInterval)
+            this.currentCircle = 0
+            this.submitSuccess = false
+            this.submitLoading = false
+            this.step = 3
           }
         }).catch(error => {
-          clearInterval(this.circleInterval);
-          this.currentCircle = 0;
-          this.submitSuccess = false;
-          this.submitLoading = false;
-          this.step = 3;
-        });
+          clearInterval(this.circleInterval)
+          this.currentCircle = 0
+          this.submitSuccess = false
+          this.submitLoading = false
+          this.step = 3
+        })
     },
     handleSubmitExtra () {
       if (this.handleSubmitExtraLoading) {
-        return;
+        return
       }
       const formdata = {
         order_id: this.order_id,
-        extra: '',
+        extra: ''
       }
       if (this.isLogin) {
-        formdata.user_id = localStorage.getItem('user').uid;
+        formdata.user_id = localStorage.getItem('user').uid
       } else {
-        formdata.uuid = localStorage.getItem('uuid');
+        formdata.uuid = localStorage.getItem('uuid')
       }
       formdata.extra = JSON.stringify(this.extra_order_tip.map((item, index) => {
         return {
           key: this.language === 'zh' ? item.title : this.language === 'hk' ? item.title_hk : item.title_en,
-          value: this.extra_order_tip_form[index],
+          value: this.extra_order_tip_form[index]
         }
       }))
       this.$http
         .post(`/api/order/updateExtra`, formdata)
         .then(response => {
-           if (response.data.code == 0) {
-             this.step = 5;
-             if (parseFloat(this.result_cv19.prob) >= 50) {
-              this.showHighRisk = true;
+          if (response.data.code == 0) {
+            this.step = 5
+            if (parseFloat(this.result_cv19.prob) >= 50) {
+              this.showHighRisk = true
             }
-           } else {
-             this.$toast({
+          } else {
+            this.$toast({
               mask: false,
               message: 'Submit Error'
-            });
-           }
+            })
+          }
         }).catch(error => {
           this.$toast({
             mask: false,
             message: 'Submit Error'
-          });
-        });
+          })
+        })
     },
     handleLogin () {
-      this.$router.push("/login");
+      this.$router.push('/login')
     },
     parseInt (value) {
       return parseInt(value)
     },
-    handlePre() {
+    handlePre () {
       if (this.imgIndex > 0) {
         this.imgIndex--
       }
     },
-    handleNext() {
+    handleNext () {
       if (this.imgIndex < 3) {
-        this.noImage = true;
-        this.uploadImage[this.imgIndex] = this.photoClips[this.imgIndex].clip();
-        this.photoClips[this.imgIndex].destroy();
-        this.imgIndex++;
+        this.noImage = true
+        this.uploadImage[this.imgIndex] = this.photoClips[this.imgIndex].clip()
+        this.photoClips[this.imgIndex].destroy()
+        this.imgIndex++
       } else {
-        this.uploadImage[this.imgIndex] = this.photoClips[this.imgIndex].clip();
-        this.photoClips[this.imgIndex].destroy();
+        this.uploadImage[this.imgIndex] = this.photoClips[this.imgIndex].clip()
+        this.photoClips[this.imgIndex].destroy()
         this.photoClips = [null, null, null, null]
         this.step = 1
       }
     }
   },
-  destroyed() {
+  destroyed () {
     if (this.circleInterval != null) {
-      clearInterval(this.circleInterval);
+      clearInterval(this.circleInterval)
     }
     this.destroyClips()
   }
