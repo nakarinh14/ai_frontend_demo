@@ -250,7 +250,8 @@ import { getLanguage } from '../../i18n/index'
 import * as imageConversion from 'image-conversion'
 import PhotoClip from 'photoclip'
 import { enUS as dateLocaleEn, th as dateLocaleTh } from 'date-fns/locale'
-import { format, subHours } from 'date-fns'
+import { format } from 'date-fns'
+import { utcToZonedTime, zonedTimeToUtc } from "date-fns-tz";
 export default {
   name: 'home',
   data () {
@@ -492,7 +493,9 @@ export default {
             this.result_pulmonary.prob = Number(ret.pulmonary)
             this.result_ocular.prob = Number(ret.ocular)
             const dateFormatLocale = this.language === 'th' ? dateLocaleTh : dateLocaleEn
-            this.order_timestamp = format(subHours(new Date(ret.create_date), 1), 'dd MMMM yyyy HH:mm:ss', { locale: dateFormatLocale })
+            const parsedTime = zonedTimeToUtc(ret.create_date, 'Asia/Shanghai')
+            const thaiLocalTime = utcToZonedTime(parsedTime, 'Asia/Bangkok')
+            this.order_timestamp = format(thaiLocalTime, 'dd MMMM yyyy HH:mm:ss', { locale: dateFormatLocale })
             this.order_id = ret.id
             if (ret.uuid != null) {
               localStorage.setItem('uuid', ret.uuid)
