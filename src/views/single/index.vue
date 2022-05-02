@@ -166,7 +166,7 @@
             <span style="color: red; font-weight: bold;">{{$t('order.high_risk_tip_0')}}</span>
             <span style="color: red;">{{$t('order.high_risk_tip_1')}}</span>
           </div>
-<!--          <span style="margin-top: 0.1rem; font-size: 0.3rem; font-weight: bold">{{ this.order_timestamp }}</span>-->
+          <span style="margin-top: 0.1rem; font-size: 0.3rem; font-weight: bold">{{ this.order_timestamp }}</span>
         </div>
         <div class="result-item" v-if="!isNormalUser">
           <span class="result-label">{{result_pulmonary.label}}</span>
@@ -207,11 +207,11 @@
 import { checkLogin, isNormalUser, dataURLtoFile } from '../../utils/util'
 import { getLanguage } from '../../i18n/index'
 import * as imageConversion from 'image-conversion'
-// import { format } from 'date-fns'
-// import { enUS as dateLocaleEn, th as dateLocaleTh } from 'date-fns/locale'
+import { format } from 'date-fns'
+import { enUS as dateLocaleEn, th as dateLocaleTh } from 'date-fns/locale'
 import PhotoClip from 'photoclip'
 import EXIF from 'exif-js'
-// import { utcToZonedTime, zonedTimeToUtc } from 'date-fns-tz'
+import { utcToZonedTime, zonedTimeToUtc } from 'date-fns-tz'
 export default {
   name: 'home',
   data () {
@@ -445,10 +445,10 @@ export default {
             this.result_pulmonary.prob = Number(ret.pulmonary)
             this.result_ocular.prob = Number(ret.ocular)
             this.order_id = ret.id
-            // const dateFormatLocale = this.language === 'th' ? dateLocaleTh : dateLocaleEn
-            // const parsedTime = zonedTimeToUtc(ret.create_date, 'Asia/Shanghai')
-            // const thaiLocalTime = utcToZonedTime(parsedTime, 'Asia/Bangkok')
-            // this.order_timestamp = format(thaiLocalTime, 'dd MMMM yyyy HH:mm:ss', { locale: dateFormatLocale })
+            const dateFormatLocale = this.language === 'th' ? dateLocaleTh : dateLocaleEn
+            const parsedTime = zonedTimeToUtc(ret.create_date, 'Asia/Shanghai')
+            const thaiLocalTime = utcToZonedTime(parsedTime, 'Asia/Bangkok')
+            this.order_timestamp = format(thaiLocalTime, 'dd MMMM yyyy HH:mm:ss', { locale: dateFormatLocale })
             if (ret.uuid != null) {
               localStorage.setItem('uuid', ret.uuid)
             }
