@@ -115,7 +115,7 @@
       <div class="order-help" style="margin-bottom: 20px;">
         {{$t('order.step_2_title')}}
       </div>
-      <div class="order-preview-image" v-for="(item, index) in uploadImage" :key="item" >
+      <div class="order-preview-image" v-for="(item, index) in uploadImage" :key="index" >
         <span class="image-title" v-if="index === 0">{{ $t('multi.img0') }}:</span>
         <span class="image-title" v-if="index === 1">{{ $t('multi.img1') }}:</span>
         <span class="image-title" v-if="index === 2">{{ $t('multi.img2') }}:</span>
@@ -204,7 +204,7 @@
             <span style="color: red; font-weight: bold;">{{$t('order.high_risk_tip_0')}}</span>
             <span style="color: red;">{{$t('order.high_risk_tip_1')}}</span>
           </div>
-          <span style="margin-top: 0.1rem; font-size: 0.3rem; font-weight: bold">{{ this.order_timestamp }}</span>
+<!--          <span style="margin-top: 0.1rem; font-size: 0.3rem; font-weight: bold">{{ this.order_timestamp }}</span>-->
         </div>
         <div class="result-item" v-if="!isNormalUser">
           <span class="result-label">{{result_pulmonary.label}}</span>
@@ -249,9 +249,9 @@ import { checkLogin, isNormalUser, dataURLtoFile } from '../../utils/util'
 import { getLanguage } from '../../i18n/index'
 import * as imageConversion from 'image-conversion'
 import PhotoClip from 'photoclip'
-import { enUS as dateLocaleEn, th as dateLocaleTh } from 'date-fns/locale'
-import { format } from 'date-fns'
-import { utcToZonedTime, zonedTimeToUtc } from "date-fns-tz";
+// import { enUS as dateLocaleEn, th as dateLocaleTh } from 'date-fns/locale'
+// import { format } from 'date-fns'
+// import { utcToZonedTime, zonedTimeToUtc } from "date-fns-tz";
 export default {
   name: 'home',
   data () {
@@ -492,10 +492,10 @@ export default {
             this.result_cv19.prob = Number(ret.cv19)
             this.result_pulmonary.prob = Number(ret.pulmonary)
             this.result_ocular.prob = Number(ret.ocular)
-            const dateFormatLocale = this.language === 'th' ? dateLocaleTh : dateLocaleEn
-            const parsedTime = zonedTimeToUtc(ret.create_date, 'Asia/Shanghai')
-            const thaiLocalTime = utcToZonedTime(parsedTime, 'Asia/Bangkok')
-            this.order_timestamp = format(thaiLocalTime, 'dd MMMM yyyy HH:mm:ss', { locale: dateFormatLocale })
+            // const dateFormatLocale = this.language === 'th' ? dateLocaleTh : dateLocaleEn
+            // const parsedTime = zonedTimeToUtc(ret.create_date, 'Asia/Shanghai')
+            // const thaiLocalTime = utcToZonedTime(parsedTime, 'Asia/Bangkok')
+            // this.order_timestamp = format(thaiLocalTime, 'dd MMMM yyyy HH:mm:ss', { locale: dateFormatLocale })
             this.order_id = ret.id
             if (ret.uuid != null) {
               localStorage.setItem('uuid', ret.uuid)
